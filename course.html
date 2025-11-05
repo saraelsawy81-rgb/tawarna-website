@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Course Details – Tawarna</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #f8f9ff; color: #333; }
+        header { background: linear-gradient(135deg, #6e8efb, #a777e3); padding: 0.8rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { color: white; font-size: 1.6rem; font-weight: bold; }
+        nav a { color: white; text-decoration: none; }
+        .container { max-width: 1000px; margin: 2rem auto; padding: 0 1.5rem; }
+        .course-header { display: flex; gap: 2rem; margin-bottom: 2rem; }
+        .course-video { flex: 1; height: 400px; background: #ddd; border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+        .course-info { flex: 1; }
+        .course-title { font-size: 2rem; margin-bottom: 0.5rem; }
+        .rating { color: gold; margin: 1rem 0; font-size: 1.3rem; }
+        .btn { display: inline-block; background: #6e8efb; color: white; padding: 0.8rem 1.5rem; text-decoration: none; border-radius: 6px; font-weight: bold; margin-top: 1rem; }
+        .section { background: white; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+        .section h3 { margin-bottom: 1rem; color: #555; }
+        footer { text-align: center; padding: 2rem; background: #333; color: white; margin-top: 3rem; }
+        @media (max-width: 768px) { .course-header { flex-direction: column; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Tawarna</div>
+        <nav><a href="index.html">Home</a></nav>
+    </header>
+
+    <div class="container">
+        <div class="course-header">
+            <div class="course-video">[Course Video]</div>
+            <div class="course-info">
+                <h1 class="course-title">Web Development Bootcamp</h1>
+                <div class="rating">⭐⭐⭐⭐⭐ (4.9)</div>
+                <div style="font-size: 1.4rem; color: #e74c3c; margin: 1rem 0;">Free</div>
+                <a href="results.html" class="btn">View Training Results</a>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>About This Course</h3>
+            <p>This bootcamp covers everything from HTML to deployment.</p>
+        </div>
+
+        <div class="section">
+            <h3>What You'll Learn</h3>
+            <ul>
+                <li>Build responsive websites</li>
+                <li>Create interactive apps</li>
+                <li>Deploy to the cloud</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Tawarna</p>
+    </footer>
+</body>
+</html>

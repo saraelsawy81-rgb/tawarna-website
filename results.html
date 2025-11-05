@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Training Results – Tawarna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9ff;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .filters {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .filters h2 {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .filter-row {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #666;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .diploma-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            margin-bottom: 2rem;
+        }
+
+        .diploma-section h3 {
+            color: #6e8efb;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .course-detail {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .course-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .stats {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-box {
+            background: #f0f7ff;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 120px;
+        }
+
+        .stat-value {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #6e8efb;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .course-description {
+            margin: 1.5rem 0;
+            line-height: 1.7;
+            color: #555;
+        }
+
+        .platform-logo {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .platform-logo img {
+            height: 50px;
+            object-fit: contain;
+        }
+
+        .training-facts {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .facts-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .facts-video {
+            flex: 1;
+            min-width: 300px;
+            background: #ddd;
+            height: 250px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .facts-content h3 {
+            margin-bottom: 1rem;
+            color: #555;
+        }
+
+        .facts-list {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .save-btn {
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .free-resources {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .free-resources h3 {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .resource-box {
+            background: #e8f4fc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .resource-icon {
+            background: #6e8efb;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .resource-text h4 {
+            margin-bottom: 0.3rem;
+        }
+
+        .resource-text p {
+            color: #666;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #333;
+            color: white;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Tawarna</div>
+        <nav>
+            <a href="index.html">Home</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- Filters -->
+        <section class="filters">
+            <h2>Final Search Results</h2>
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label>Category</label>
+                    <select>
+                        <option>Programming & Development</option>
+                        <option>Design & Creativity</option>
+                        <option>Business & Marketing</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label>Course Type</label>
+                    <select>
+                        <option>Diploma</option>
+                        <option>Certificate</option>
+                        <option>Short Course</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diploma Section -->
+        <section class="diploma-section">
+            <h3>Diploma: Web Development Professional</h3>
+        </section>
+
+        <!-- Course Detail -->
+        <section class="course-detail">
+            <h2 class="course-title">Advanced Web Development Bootcamp</h2>
+
+            <div class="stats">
+                <div class="stat-box">
+                    <div class="stat-value">4.9</div>
+                    <div class="stat-label">Rating</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value">2,450</div>
+                    <div class="stat-label">Trainees</div>
+                </div>
+            </div>
+
+            <p class="course-description">
+                This comprehensive bootcamp covers HTML, CSS, JavaScript, React, Node.js, and deployment.
+                Designed for beginners and intermediate learners who want to become job-ready developers.
+            </p>
+
+            <div class="platform-logo">
+                <img src="https://via.placeholder.com/150x50/4CAF50/FFFFFF?text=Coursera" alt="Coursera">
+            </div>
+        </section>
+
+        <!-- Training Facts -->
+        <section class="training-facts">
+            <div class="facts-content">
+                <h3>Training Facts & Modules</h3>
+                <ul class="facts-list">
+                    <li>Frontend Development (HTML, CSS, JS)</li>
+                    <li>Responsive Design & Frameworks</li>
+                    <li>Backend with Node.js & Express</li>
+                    <li>Database Integration (MongoDB)</li>
+                    <li>Deployment & Hosting</li>
+                </ul>
+                <button class="save-btn">Save</button>
+            </div>
+            <div class="facts-video">
+                [Training Video Preview]
+            </div>
+        </section>
+
+        <!-- Free Resources -->
+        <section class="free-resources">
+            <h3>Free Books & Courses</h3>
+            <div class="resource-box">
+                <div class="resource-icon">📚</div>
+                <div class="resource-text">
+                    <h4>Knowledge Bank</h4>
+                    <p>Access free e-books, guides, and learning resources in our Knowledge Bank.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>© 2025 Tawarna. All rights reserved.</p>
+    </footer>
+</body>
+</html>

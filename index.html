@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Tawarna - Find the Best Free Courses</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9ff;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.4rem 0.8rem;
+            border-radius: 6px;
+            transition: background 0.3s;
+        }
+
+        nav a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        .hero-slider {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            margin: 1.5rem 0;
+        }
+
+        .slider-images {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
+        }
+
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .prev { left: 20px; }
+        .next { right: 20px; }
+
+        .search-section {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 2rem auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .search-section h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+            color: #555;
+        }
+
+        .search-bar {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px 0 0 8px;
+            font-size: 1rem;
+        }
+
+        .search-bar button {
+            padding: 0.8rem 1.2rem;
+            background: #6e8efb;
+            color: white;
+            border: none;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .platforms {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .platforms h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .platform-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .platform-card {
+            background: white;
+            padding: 1.2rem 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            min-width: 130px;
+            max-width: 160px;
+            font-weight: bold;
+            color: #6e8efb;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+        }
+
+        .courses {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .courses h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.8rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .course-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .course-img {
+            height: 150px;
+            background: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #6e8efb;
+        }
+
+        .course-info {
+            padding: 1.2rem;
+        }
+
+        .course-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-instructor {
+            color: #666;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .course-rating {
+            color: gold;
+            margin-bottom: 0.6rem;
+            font-weight: bold;
+        }
+
+        .course-price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #333;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul { gap: 0.5rem; }
+            nav a { font-size: 0.85rem; padding: 0.3rem 0.6rem; }
+            .hero-slider { height: 300px; font-size: 1.8rem; }
+            .platform-card { min-width: 110px; padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Tawarna</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About Platform</a></li>
+                <li><a href="#">Knowledge Bank</a></li>
+                <li><a href="#">Discount Coupons</a></li>
+                <li><a href="#">Annual Bags</a></li>
+                <li><a href="#">Training Bags</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero-slider">
+        <div class="slider-images" id="slider">
+            <div class="slide" style="background: #4CAF50;">Coursera</div>
+            <div class="slide" style="background: #2196F3;">edX</div>
+            <div class="slide" style="background: #FF9800;">Alison</div>
+            <div class="slide" style="background: #4285F4;">Google</div>
+            <div class="slide" style="background: #1A73E8;">Khan Academy</div>
+            <div class="slide" style="background: #50C878;">Siedemi</div>
+        </div>
+        <button class="slider-btn prev" onclick="changeSlide(-1)">‹</button>
+        <button class="slider-btn next" onclick="changeSlide(1)">›</button>
+    </div>
+
+    <div class="search-section">
+        <h2>Search for the best free courses</h2>
+        <div class="search-bar">
+            <input type="text" placeholder="Enter platform name or course..." />
+            <button onclick="window.location.href='search.html'">Search</button>
+        </div>
+    </div>
+
+    <section class="platforms">
+        <h2>Supported Platforms</h2>
+        <div class="platform-grid">
+            <div class="platform-card">Coursera</div>
+            <div class="platform-card">edX</div>
+            <div class="platform-card">Alison</div>
+            <div class="platform-card">Google</div>
+            <div class="platform-card">Khan Academy</div>
+            <div class="platform-card">Siedemi</div>
+        </div>
+    </section>
+
+    <section class="courses">
+        <h2>Top Rated Courses</h2>
+        <div class="course-grid">
+            <div class="course-card" onclick="window.location.href='course.html'">
+                <div class="course-img">Web Dev</div>
+                <div class="course-info">
+                    <div class="course-title">Web Development Bootcamp</div>
+                    <div class="course-instructor">By John Smith</div>
+                    <div class="course-rating">⭐⭐⭐⭐⭐ (4.9)</div>
+                    <div class="course-price">Free</div>
+                </div>
+            </div>
+            <div class="course-card" onclick="window.location.href='course.html'">
+                <div class="course-img">Data Sci</div>
+                <div class="course-info">
+                    <div class="course-title">Data Science Masterclass</div>
+                    <div class="course-instructor">By Emily Davis</div>
+                    <div class="course-rating">⭐⭐⭐⭐⭐ (4.8)</div>
+                    <div class="course-price">Free</div>
+                </div>
+            </div>
+            <div class="course-card" onclick="window.location.href='course.html'">
+                <div class="course-img">Design</div>
+                <div class="course-info">
+                    <div class="course-title">UI/UX Design Essentials</div>
+                    <div class="course-instructor">By Michael Brown</div>
+                    <div class="course-rating">⭐⭐⭐⭐⭐ (4.7)</div>
+                    <div class="course-price">Free</div>
+                </div>
+            </div>
+            <div class="course-card" onclick="window.location.href='course.html'">
+                <div class="course-img">Marketing</div>
+                <div class="course-info">
+                    <div class="course-title">Digital Marketing Pro</div>
+                    <div class="course-instructor">By Sarah Wilson</div>
+                    <div class="course-rating">⭐⭐⭐⭐⭐ (4.6)</div>
+                    <div class="course-price">Free</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Tawarna. All rights reserved.</p>
+        <p>contact@tawarna.com</p>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function changeSlide(direction) {
+            currentIndex += direction;
+            if (currentIndex >= totalSlides) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = totalSlides - 1;
+            document.getElementById('slider').style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        setInterval(() => changeSlide(1), 5000);
+    </script>
+</body>
+</html>

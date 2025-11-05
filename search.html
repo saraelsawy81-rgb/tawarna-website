@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Search Results – Tawarna</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9ff;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
+            padding: 0.8rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .container {
+            display: flex;
+            padding: 2rem;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .filters {
+            width: 250px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 20px;
+        }
+
+        .filters h3 {
+            margin-bottom: 1.2rem;
+            color: #555;
+        }
+
+        .filter-group {
+            margin-bottom: 1.2rem;
+        }
+
+        .filter-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: #666;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+        }
+
+        .results {
+            flex: 1;
+        }
+
+        .results-header {
+            margin-bottom: 2rem;
+        }
+
+        .results-header h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .results-header p {
+            color: #666;
+        }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .platform-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .platform-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .platform-img {
+            height: 180px;
+            background: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #6e8efb;
+        }
+
+        .platform-info {
+            padding: 1.2rem;
+        }
+
+        .platform-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .platform-info p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #6e8efb;
+            color: white;
+            text-decoration: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 6px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #333;
+            color: white;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 900px) {
+            .container { flex-direction: column; }
+            .filters { width: 100%; position: static; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Tawarna</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="filters">
+            <h3>Filters</h3>
+            <div class="filter-group">
+                <label>Category</label>
+                <select>
+                    <option>All Platforms</option>
+                    <option>Programming</option>
+                    <option>Design</option>
+                    <option>Business</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Price</label>
+                <select>
+                    <option>All</option>
+                    <option>Free</option>
+                    <option>Paid</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label>Sort By</label>
+                <select>
+                    <option>Relevance</option>
+                    <option>Alphabetical</option>
+                    <option>Most Popular</option>
+                </select>
+            </div>
+        </aside>
+
+        <main class="results">
+            <div class="results-header">
+                <h1>Search Results for "Web Development"</h1>
+                <p>Found 6 supported platforms</p>
+            </div>
+
+            <div class="platform-grid">
+                <div class="platform-card" onclick="window.location.href='course.html'">
+                    <div class="platform-img">Coursera</div>
+                    <div class="platform-info">
+                        <h3>Coursera</h3>
+                        <p>University-level courses, many free.</p>
+                        <a href="course.html" class="btn">View Courses</a>
+                    </div>
+                </div>
+                <div class="platform-card" onclick="window.location.href='course.html'">
+                    <div class="platform-img">edX</div>
+                    <div class="platform-info">
+                        <h3>edX</h3>
+                        <p>Free courses from MIT, Harvard & more.</p>
+                        <a href="course.html" class="btn">View Courses</a>
+                    </div>
+                </div>
+                <div class="platform-card" onclick="window.location.href='course.html'">
+                    <div class="platform-img">Alison</div>
+                    <div class="platform-info">
+                        <h3>Alison</h3>
+                        <p>100% free courses with certificates.</p>
+                        <a href="course.html" class="btn">View Courses</a>
+                    </div>
+                </div>
+                <div class="platform-card" onclick="window.location.href='course.html'">
+                    <div class="platform-img">Google</div>
+                    <div class="platform-info">
+                        <h3>Google</h3>
+                        <p>Free digital skills from Google.</p>
+                        <a href="course.html" class="btn">View Courses</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <p>© 2025 Tawarna. All rights reserved.</p>
+    </footer>
+</body>
+</html>
